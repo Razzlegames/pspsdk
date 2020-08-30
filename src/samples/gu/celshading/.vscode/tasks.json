@@ -1,0 +1,42 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+
+            "label": "Compile PSP",
+            "type": "shell",
+            "command": "docker run -it --rm --name pspdev_sample -w /src/celshading --rm -v \"${PWD}/..:/src\" ticky/pspdev make",
+            "group": "build",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+
+            "label": "clean PSP",
+            "type": "shell",
+            "command": "docker run -it --rm --name pspdev_sample -w /src/celshading --rm -v \"${PWD}/..:/src\" ticky/pspdev make clean",
+            "group": "build",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+
+        {
+            "label": "Open PSPDev Shell",
+            "type": "shell",
+            "command": "docker run -it --name pspdev_sample --rm -v \"${PWD}/..:/src\" ticky/pspdev bash ",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
